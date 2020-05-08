@@ -89,6 +89,11 @@ NS_ASSUME_NONNULL_BEGIN
       SFSafariViewController *safariVC =
           [[SFSafariViewController alloc] initWithURL:requestURL];
       safariVC.delegate = self;
+      
+      if (@available(iOS 11.0, *)) {
+        safariVC.dismissButtonStyle = SFSafariViewControllerDismissButtonStyleCancel;
+      }
+
       _safariVC = safariVC;
       [_presentingViewController presentViewController:safariVC animated:YES completion:nil];
       openedUserAgent = YES;
